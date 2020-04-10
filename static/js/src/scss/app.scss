@@ -1,0 +1,38 @@
+
+@import "./flex";
+
+* {
+	box-sizing: border-box;
+}
+
+.header-fix {
+	width: 100%;
+	margin: 10px 0px;
+	&:before, &:after {
+		content: none;
+	}
+}
+.agent-placeholder {
+	min-height: 48px;
+	padding: 6px;
+	border: 1px solid #b948f3;
+	background-color: rgba(246, 227, 252, 1);
+	border-radius: 43px;
+	min-width: 14%;
+	width: auto;
+	float: right;
+	.circle {
+		padding: 6px;
+		border: 1px solid #b948f3;
+		border-radius: 50%;
+		width: 20%;
+		font-size: 12px;
+		background-color: #b948f3;
+		color: #fff;
+	}
+	.name {
+		margin-left: 10px;
+	}
+}
+
+

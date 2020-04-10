@@ -1,0 +1,36 @@
+
+.flex {
+	display: flex;
+}
+.flex-gs {
+	flex: 1 1 auto;
+}
+.flex-og {
+	flex: 1 0 auto;
+}
+.flex-os {
+	flex: 0 1 auto;
+}
+
+// axes based styles
+.flex--direction-row {
+	flex-direction: row;
+}
+.flex--justify-start {
+	justify-content: start;
+}
+.flex--justify-center {
+	justify-content: center;
+}
+.flex--justify-space-between {
+	justify-content: space-between;
+}
+.flex--align-center {
+	align-items: center;
+}
+.flex--wrap {
+	flex-wrap: wrap;
+}
+.flex--no-wrap {
+	flex-wrap: nowrap;
+}
