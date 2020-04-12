@@ -4,6 +4,8 @@ const createError = require('http-errors');
 const path = require('path');
 const log4js = require('log4js');
 const RemoteEndpoint = require("./routes/ext-endpoint.js");
+// define routes
+const search = require("./routes/search.js");
 log4js.configure({
 	appenders: { localhost: {type: 'dateFile', filename: 'localhost.log'} },
 	categories: {default: { appenders: ['localhost'], level: 'warn', enableCallStack: true}}
@@ -17,7 +19,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use('/resource', express.static(path.join(__dirname, '../static')));
 app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
 
+app.use("/get", search);
 app.get('/', function(req, res, next) {
 	if (app.get('loggedInUser')) {
 		logger.warn("logged in user redirected to dashboard");
@@ -52,6 +56,7 @@ app.post('/login', function(req, res, next) {
 		logger.warn("request data", req_data);
 		RemoteEndpoint.checkLogin(req_data).then(function(data) {
 			logger.warn("forwarding request to get agent details");
+			app.set("agentAccessDetails", data);
 			RemoteEndpoint.getAgentDetails(data).then(function(agentDetails) {
 				app.set("loggedInUser", true);
 				app.set("agentDetails", agentDetails);
@@ -77,6 +82,7 @@ app.get('/logout', function(req, res, next) {
 	app.set("loggedInUser", false);
 	res.redirect("/");
 });
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
 	next(createError(404));
@@ -87,6 +93,7 @@ app.use(function(err, req, res, next) {
 	res.locals.message = err.message;
 	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+	console.log("error : ", err);
 	// render the error page
 	res.status(err.status || 500);
 	res.render('error');

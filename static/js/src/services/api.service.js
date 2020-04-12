@@ -1,8 +1,10 @@
 
-ApiService.$inject = ['$http', '$q'];
-function ApiService($http, $q) {
+ApiService.$inject = ['$http'];
+function ApiService($http) {
 
 	var self = this;
+	var SERVER_ERROR = "Something went wrong. Try again later.";
+
 	self.login = function(data) {
 		return $http({
 			url: 'http://15.206.185.198:8080/agent-service/auth/v1.0.0/login',
@@ -15,13 +17,31 @@ function ApiService($http, $q) {
 		}).then(function(response) {
 			console.log('response : ', response);
 			if (response.data.code == 200) {
-				return $q.resolve(response.data.data);
+				return Promise.resolve(response.data.data);
 			} else {
-				return $q.reject(response.data.message);
+				return Promise.reject(response.data.message);
 			}
 		}, function(error) {
 			console.log('error in getting data ; ', error);
-			return $q.reject("Something went wrong. Try again later.");
+			return Promise.reject(SERVER_ERROR);
+		});
+	};
+
+	self.getCustomers = function(params) {
+		return $http({
+			url: '/get/customers',
+			method: 'GET',
+			params: params,
+			cache: true
+		}).then(function(response) {
+			if (response.data.successful) {
+				return Promise.resolve(response.data.data);
+			} else {
+				return Promise.reject(response.data.message);
+			}
+		}, function(error) {
+			console.log("error in getting customers : ", error);
+			return Promise.reject(error);
 		});
 	};
 }

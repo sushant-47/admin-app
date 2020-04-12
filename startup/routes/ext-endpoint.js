@@ -51,7 +51,31 @@ function getAgentDetails(agentCredentials) {
 	});
 }
 
+function getCustomers(req_data) {
+	var options = {
+		uri: 'http://15.206.185.198:8080/user-service/v1.0.0/searchCustomers',
+		method: 'POST',
+		headers: req_data.headers,
+		body: req_data.req_body,
+		json: true
+	};
+	logger.warn("request to get customers : ", options);
+	return request(options).then(function(response) {
+		logger.warn("successfully fetched customers from endpoint : ", response.code);
+		if (response.code == 200) {
+			return Promise.resolve(response.data);
+		} else {
+			return Promise.reject({error: response.message});
+		}
+	}).catch(function(error) {
+		logger.warn("error in fetching customers from enpoint");
+		logger.error(error.error);
+		return Promise.reject(error.error);
+	});
+}
+
 module.exports = {
 	checkLogin: checkLogin,
-	getAgentDetails: getAgentDetails
+	getAgentDetails: getAgentDetails,
+	getCustomers: getCustomers
 };

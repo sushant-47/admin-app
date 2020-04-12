@@ -16,17 +16,30 @@
 .flex--direction-row {
 	flex-direction: row;
 }
+.flex--direction-column {
+	flex-direction: column;
+}
 .flex--justify-start {
 	justify-content: start;
 }
 .flex--justify-center {
 	justify-content: center;
 }
+.flex--justify-end {
+	justify-content: end;
+	justify-content: flex-end;
+}
 .flex--justify-space-between {
 	justify-content: space-between;
 }
+.flex--align-start {
+	align-items: start;
+}
 .flex--align-center {
 	align-items: center;
+}
+.flex--align-end {
+	align-items: end;
 }
 .flex--wrap {
 	flex-wrap: wrap;
