@@ -140,8 +140,8 @@
 					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
 						"outputPath": "dist/my-app",
-						"index": "projects/my-app/src/index.html",
 						"main": "projects/my-app/src/main.ts",
+						"index": "",
 						"polyfills": "projects/my-app/src/polyfills.ts",
 						"tsConfig": "projects/my-app/tsconfig.app.json",
 						"aot": true,
@@ -150,9 +150,17 @@
 							"projects/my-app/src/assets"
 						],
 						"styles": [
-							"projects/my-app/src/styles.scss"
+							{
+								"input": "projects/my-app/src/styles.scss",
+								"bundleName": "app.bundle",
+								"inject": false
+							}
 						],
-						"scripts": []
+						"scripts": [],
+						"optimization": {
+							"styles": true,
+							"scripts": false
+						}
 					},
 					"configurations": {
 						"production": {

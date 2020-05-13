@@ -1,23 +1,29 @@
 
 <!doctype HTML>
-<html ng-app="customApp">
+<html lang="en">
 	<head>
 		<title><%= title %></title>
 		<link rel="preconnect" href="maxcdn.bootstrapcdn.com" crossorigin />
 		<link rel="preconnect" href="ajax.googleapis.com" crossorigin />
+		<link rel="icon shortcut" type="image/x-icon" href="/resource/img/app.ico" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" type="text/javascript"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js" type="text/javascript"></script>
-		<link rel="stylesheet" href="/resource/js/dist/app.bundle.css" />
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js" type="text/javascript"></script> -->
+		<link rel="stylesheet" href="/resource/angcli/angular-example/dist/my-app/app.bundle.css" />
 		<base href="/">
 	</head>
-	<body ng-controller="appController as actrl">
+	<body>
 		<%if (typeof agentDetails == 'object'){ %>
 			<div id="loggedInAgent">
 				<div data-name="<%= agentDetails.name %>" data-lang="<%= agentDetails.language %>" data-mobile="<%= agentDetails.phoneNumber %>" data-cc="<%= agentDetails.countryCode %>" class="agent-details"></div>
 			</div>
 		<% } %>
-		<div ng-view></div>
-		<script src="/resource/js/dist/app.bundle.js" type="text/javascript"></script>
+		<app-root>
+			<div> hello world </div>
+		</app-root>
+		<script src="/resource/angcli/angular-example/dist/my-app/runtime.js" type="application/javascript"></script>
+		<script src="/resource/angcli/angular-example/dist/my-app/polyfills.js" type="application/javascript"></script>
+		<script src="/resource/angcli/angular-example/dist/my-app/vendor.js" type="application/javascript"></script>
+		<script src="/resource/angcli/angular-example/dist/my-app/main.js" type="application/javascript"></script>
 	</body>
 </html>
