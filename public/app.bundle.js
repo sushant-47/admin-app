@@ -112,12 +112,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
 	$routeProvider
 		.when('/', {
-			templateUrl: 'resource/templates/login.tmpl.html',
+			templateUrl: '/templates/login.tmpl.html',
 			controller: 'loginController',
 			controllerAs: 'lctr'
 		})
 		.when('/dashboard', {
-			templateUrl: 'resource/templates/dashboard.tmpl.html',
+			templateUrl: '/templates/dashboard.tmpl.html',
 			controller: 'dashboardController',
 			controllerAs: 'dctr'
 		});

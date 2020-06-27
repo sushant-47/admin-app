@@ -1,0 +1,83 @@
+
+<nav class="navbar navbar-default navbar-fix">
+	<div class="container-fluid flex flex--direction-column container-fix">
+		<div class="navbar-header flex flex--direction-row flex--justify-space-between flex--align-center header-fix pad-fix">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-strip" aria-expanded="true" style="float: none; margin: 0px; display: block;">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>                        
+			</button>
+			<div class="flex flex--direction-row flex--align-center flex--justify-center flex--no-wrap agent-placeholder" title="{{$root.agentDetails.name}}">
+				<!-- agent prefix and name-->
+				<div class="circle flex flex--direction-row flex--align-center flex--justify-center">
+					<span>{{$root.agentDetails.nameInitials}}</span>
+				</div>
+				<div class="width-auto flex-gs name">
+					{{$root.agentDetails.name}}
+				</div>
+			</div>
+		</div>
+		<!-- toggled content -->
+		<div class="navbar-collapse collapse in pad-fix flex flex--direction-row flex--justify-center" id="navbar-strip">
+			<div class="strip-container flex flex--direction-row flex--justify-start flex--align-center">
+				<div class="strip-item" data-ng-class="{ 'selected' : dctr.itemSelected }"> KYC Verification </div>
+			</div>
+		</div>
+	</div>
+</nav>
+   
+<div class="section-wrapper">
+	<div class="wid-20 flex flex-og flex--direction-row flex--justify-center flex--align-start">
+		<div class="wid-5 left-section">
+			<div class="card">
+				<div class="flex flex--direction-column flex--justify-start flex--align-start">
+					<div class="section-item wid-20"> Enrollments </div>
+					<div class="section-item wid-20"> Customers </div>
+				</div>
+			</div>
+		</div>
+		<div class="wid-15 data-wrapper">
+			<div class="card wid-20">
+				<div class="flex flex--direction-column flex--justify-start flex--align-start wid-20">
+					<div class="data-row header wid-20">
+						<div class="flex flex--direction-row flex--justify-start flex--align-center wid-20">
+							<div class="wid-4 item"> Customer Name </div>
+							<div class="wid-4 item"> Town </div>
+							<div class="wid-4 item"> District </div>
+							<div class="wid-4 item"> State </div>
+							<div class="wid-4 item"> Birth Date </div>
+						</div>
+					</div>
+					<div class="data-row wid-20" data-ng-repeat="customer in dctr.pageCustomers">
+						<div class="flex flex--direction-row flex--justify-start flex--align-start wid-20">
+							<div class="wid-4 item"> {{customer.name}} </div>
+							<div class="wid-4 item"> {{customer.town}} </div>
+							<div class="wid-4 item"> {{customer.district}} </div>
+							<div class="wid-4 item"> {{customer.state}} </div>
+							<div class="wid-4 item"> {{customer.dob}} </div>
+						</div>
+					</div>					
+				</div>
+			</div>
+			<div class="wid-20 page-selector">
+				<div class="flex flex--direction-row flex--justify-end flex--align-start wid-20">
+					<div class="count-wrapper">
+						<div class="card wid-20">
+							<div class="flex flex--direction-row flex--justify-center flex--align-center wid-20" data-ng-show="dctr.blockLoaded">
+								<div class="page-item" data-ng-show="dctr.blockCount > 0">
+									<!-- prev arrow -->
+
+								</div>
+								<div class="page-item" data-ng-repeat="pageCount in dctr.getPageArray()" data-ng-click="dctr.getCustomersByPage(dctr.blockCount, $index)"> {{pageCount}} </div>
+								<div class="page-item" data-ng-show="dctr.moreBlocks">
+									<!-- next arrow -->
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
