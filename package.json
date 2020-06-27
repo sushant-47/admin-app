@@ -13,6 +13,7 @@
 	"dependencies": {
 		"ejs": "^3.0.2",
 		"express": "^4.17.1",
+		"firebase-tools": "^8.4.3",
 		"log4js": "^6.1.2",
 		"nodemon": "^1.19.4",
 		"request": "^2.88.2",

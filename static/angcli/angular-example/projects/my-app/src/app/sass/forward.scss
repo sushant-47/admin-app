@@ -1,0 +1,15 @@
+@forward "mixins" with (
+	$width-num: 20
+);
+@use "sass:map";
+@use "mixins" as fwd;
+
+$fw: (
+	"color": #c82506,
+	"weight": 500
+);
+
+$fs: map.merge($fw, ("weight": 600));
+@debug $fs;
+@include fwd.hshadow("fwd", 6px);
+

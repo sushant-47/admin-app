@@ -1,0 +1,20 @@
+
+$width-num: 20 !default;
+
+@mixin width-calc($prefix: "wid") {
+	@for $i from 1 through 20 {
+		.#{$prefix}-#{5*$i} {
+			width: $i * 5%;
+		}
+	}
+}
+
+@mixin hshadow($class, $shadow) {
+	.#{$class} {
+		box-shadow: $shadow;
+	}
+}
+
+.mixin {
+	font-weight: 1000;
+}

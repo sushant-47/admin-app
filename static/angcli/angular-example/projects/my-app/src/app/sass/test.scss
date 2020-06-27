@@ -1,0 +1,7 @@
+
+@use "mixins" as testbase;
+
+@include testbase.hshadow("test", 2px);
+.test1 {
+	background: red;
+}

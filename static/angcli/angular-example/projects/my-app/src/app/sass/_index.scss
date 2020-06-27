@@ -1,0 +1,9 @@
+
+@use "forward" as base;
+@use "test";
+
+.new {
+	font-weight: 500;
+}
+
+@include base.width-calc();
